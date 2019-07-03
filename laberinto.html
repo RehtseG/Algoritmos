@@ -1,0 +1,28 @@
+<html>
+<head>
+<style type="text/css">
+#laberinto {position:absolute; top:100px;left:100px;}
+#imagen{position:absolute;top:190px;left:55px;with;10px;height:10px;backgound-color:#FFFFFF}
+</style>
+ <script  type="text/javascript">
+	//posiciones en el vector 0 izqu 1-arriba 2-derecha 1-abajo
+	pos_arriba=0;
+    pos_abajo=0;
+    pos_derecha=0;
+    pos_izquierda=0;cadena=""; caracter="";
+    caracter="";
+                  posicion=31;
+                           pos=new Array("","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1")
+
+    funtion moverImagen(id,direccion)
+    {
+    	//div a manipular
+    	var imagenb=document.getElemtById(id);
+    	//captura la posicion inicial de x y de y
+    	var posiciony=document.getElemtById("campoy").value/1;
+    	var posiciony=document.getElemById("campoyx").value/1;
+    // velocidad de la bola
+    var velocidadbola=38;	                                      
+                                                   
+                                        
+                        
