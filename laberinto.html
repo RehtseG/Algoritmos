@@ -1,9 +1,18 @@
 <html>
 <head>
-<style type="text/css">
-#laberinto {position:absolute; top:100px;left:100px;}
-#imagen{position:absolute;top:190px;left:55px;with;10px;height:10px;backgound-color:#FFFFFF}
-</style>
+	<style> 
+#laberinto {position:absolute; top:20px} 
+#laberinto {position:absolute; bottom:20px} 
+#laberinto{position:absolute; left:20px} 
+#laberinto{position:absolute; right:20px} 
+#imagen{position:absolute;top:216px}
+#imagen{position:absolute;left:55px}
+#imagen{position:absolute;width:10px}
+#imagen{position:absolute;height:10px}
+#imagen{position;absolute;backgound-color:#FFFFFF}
+</style> 
+
+
  <script  type="text/javascript">
 	//posiciones en el vector 0 izqu 1-arriba 2-derecha 1-abajo
 	pos_arriba=0;
@@ -12,7 +21,7 @@
     pos_izquierda=0;cadena=""; caracter="";
     caracter="";
                   posicion=31;
-                           pos=new Array("","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1")
+                           pos=new Array("","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1","1-1-0-0","0-1-0-1","0-1-1-1","1-1-0-0","0-1-0-1","0-1-0-1","0-1-0-0","1-0-0-0","0-1-0-1","0-1-0-1");
 
     funtion moverImagen(id,direccion)
     {
@@ -20,9 +29,95 @@
     	var imagenb=document.getElemtById(id);
     	//captura la posicion inicial de x y de y
     	var posiciony=document.getElemtById("campoy").value/1;
-    	var posiciony=document.getElemById("campoyx").value/1;
+    	var posiciony=document.getElemById("campox").value/1;
     // velocidad de la bola
-    var velocidadbola=38;	                                      
+    var velocidadbola=38;	
+    switch(direccion)
+    {
+    	case '2':
+    		//Asi se manipula la imagen con el estilo px de pixeles divido
+    		//en uno para asegurar de que es numerico
+    		//abajo
+
+    		cadena=pos[posicion];
+    		caracter=cadena.split("-");
+    		if (caracter[3]==0) {
+    			posiciony+=velocidadbola;
+    			imagenb.style.top=(posiciony)/1+"px";
+    			posicion+=10;
+    		}
+    		break;
+
+    		case '8' :
+    		//arriba
+    		cadena=pos[posicion];
+    		caracter=cadena.split("-");
+    		if(caracter[1]==0){
+    			posiciony-=velocidadbola;
+    			imagenb.style.top=(posiciony)/1+"px";
+    			posicion-=10;
+    		}
+
+    		break ;
+    		case '6';
+    		cadena=pos[posicion];
+    		if(caracter[2]==0){
+    			posicionx+=velocidadbola;
+    			imagenb.style.left=(posicionx)/1+"px";
+    			if(posicion==81){alert("GANASTE");posicion=31;}
+
+    			posicion=posicion+1;
+    		}
+    		break;
+    		case '4':
+    		cadena=pos[posicion];
+    		caracter=cadena.split("-");
+    		if(caracter[0]==0){
+    			posicionx-=velocidadbola;
+    			imagenb.style.left=(posicionx)/1+"px";
+    			posicion=posicion-1;
+    		}
+    		break ;
+
+
+    }                                      
+                                                   
+            //actualizo la posicion de X y Y de los campos
+            document.getElemtById("campoy").value=posiciony;
+            document.getElemtById("campox").value=posicionx;
+            document.getElemtById("posicion").value=posicion;
+
+            //actualizo la imagen
+            imagenb.style.left=posicionx+"px";
+            imagenb.style.top=posiciony+"px";
+
+         }               
+
+        funtion tecla(e){//con este metodo se controla los eventos  el teclado
+        	var evt=e ? e: event;
+        	var key= window.Event? evt.which : evt.kryCode;
+        	if(key==39)
+        		moverImagen('imagen','6');
+        	else if(key==37)
+        		moverImagen('imagen','4');
+        	else if(key==38)
+        		moverImagen('imagen','2');
+
+
+        } 
+    </script>
+</head>
+
+<body onkeydown="tecla(event);">
+	<b>Estudiante</b>Esther;
+	<p id="laberinto"> <img src="laberinto.jpg" alt="" width="789" height="589"> </p>
+	<p id="imagen"> <img src="bola1.gif"> </p>
+	Y<input type=texto name=campoy id=campoy value=190 size=3>
+	X<input type=text name=campox id=campox value=55 size=3>
+	posicion<input type="text" name="posicionx" value=1 size=3>
+
+</body>
+</html>	                                      
                                                    
                                         
                         
